@@ -1,0 +1,25 @@
+# ===== BACKEND (.NET) =====
+backend/bin/
+backend/obj/
+*.pdb
+*.exe
+*.dll
+
+# ===== FRONTEND (React) =====
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# ===== SYSTEM TRASH =====
+*.log
+*.user
+*.suo
+.vscode/
+.idea/
+
+# ===== OS FILES =====
+Thumbs.db
+.DS_Store
+
+# ===== Ignore Node Modules Everywhere =====
+**/node_modules/
