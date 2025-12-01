@@ -1,0 +1,4 @@
+Project Title
+TeamOps – Internal Team Collaboration, Task, and Resource Management System (PWA)
+Type: Internal web app (React + Bootstrap frontend, .NET Web API backend, SQL Server, JWT auth)
+Scope: Single organization, office use only (no multi-tenant)

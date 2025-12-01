@@ -1,0 +1,177 @@
+----- Project Title -----
+TeamOps - Internal Team Collaboration, Task, and Resource Management System (PWA)
+Type: Internal web app (React + Bootstrap frontend, .NET Web API backend, SQL Server, JWT auth)
+Scope: Single organization, office use only (no multi-tenant)
+
+
+----- Roles & Permissions -----
+2.1 Core Roles
+    1.	Super Admin (System Developer/ System Owner / IT Director)
+    2.	Admin / HR (Human Resources Executive / HR Manager)
+    3.	Manager / Team Lead (Project Manager / Supervisor / Team Lead / Operations Lead / Department Head)
+    4.	Employee (Staff, Technician, Operator, Analyst, Developer, Intern, Worker)
+    5.	Auditor (Internal Auditor / External Auditor / Compliance Officer)
+
+
+----- Technologies Used -----
+- Frontend: React, Bootstrap,
+- Backend: .NET Web API
+- Database: MsSQL Server
+- Authentication: JWT
+- Deployment: Azure App Services, Azure SQL Database
+- Version Control: Git, GitHub
+
+
+----- Database Design -----
+Users (UserId (PK), Username, Email, PasswordHash, IsActive, CreatedAt, UpdatedAt)
+
+Roles (RoleId (PK), RoleName, Description)
+
+Department (DepartmentId (PK), Name, Description)
+
+Employees (EmployeeId (PK), UserId (FK → Users), FullName, PhoneNo, Email, Position(HOD / Manager / Staff / etc.), DepartmentId (FK → Departments), Status (Active / Inactive), HireDate, CreatedAt, UpdatedAt)
+
+Tasks (TaskId (PK), Title, Description, Priority, Status, DueDate, CreatedBy (FK → Users), AssignedTo (FK → Users), DepartmentId (FK → Departments), CreatedAt, UpdatedAt)
+
+LicenseTypes (LicenseTypeId (PK), Name, Description)
+
+EmployeeLicenses (EmployeeLicenseId (PK), EmployeeId (FK → Employees), LicenseTypeId (FK → LicenseTypes), LicenseNumber, IssueDate, ExpiryDate, IssuedBy, UpdatedAt)
+
+Documents (id, user_id, file_name, file_url, doc_type, expiry_date, uploaded_by, uploaded_at)
+
+Notifications (id, user_id, title, message, is_read, sent_at)
+
+Audit_Logs (id, user_id, module, action, old_value, new_value, timestamp)
+
+
+
+----- Modules & Pages -----
+Modules:
+- User & Role Management: Control access/permissions
+- Task & Assignment: Assign tasks with deadlines
+- Certification & Document Tracking: Track expiry dates
+- Notification System: Email reminders & alerts
+- Audit Logging: Record user actions
+
+
+
+----- SUPER ADMIN -----
+Super Admin CAN:
+- Manage all users (create, update, deactivate)
+- Manage roles & permissions
+- View entire audit logs
+- Access all modules without restriction
+
+Pages:
+- Dashboard: Summary Count of Users, Departments, Employees
+- User Management: Create/update/deactivate users accounts
+- Audit Logs: View complete system audit logs
+
+API:
+- /login = Login page
+- /SuperAdmin/Dashboard = Overview of system stats
+- /SuperAdmin/UserManagement = Manage users and roles
+- /SuperAdmin/AuditLogs = View audit logs
+
+
+----- ADMIN / HR -----
+Admin / HR CAN:
+- View all employees across departments
+- Create/update employee Accounts
+- View all Managers, HODs, Staff
+- Manage employee status (active/inactive)
+- Manage certifications & expiry tracking
+- View audit logs related to HR actions
+
+Pages:
+- Dashboard: summary count of total departments, employees, Managers
+- User Management: Create/update employee accounts
+- Certification Management: Track and manage employee certifications
+- Task Overview: View assigned tasks
+- Notification Center: View/send notifications
+- Logs: View HR-related audit logs
+
+
+---- Manager / Team Lead -----
+Manager / Team Lead CAN:
+- View all employees across departments
+- Assign tasks to employees and track progress
+- View Employee Profile
+- View Employee Certifications
+- View department-level audit logs
+- Update task status
+- Comment on tasks
+- View all tasks in their department
+
+Pages:
+- Dashboard: View total Employees, Tasks, Certifications
+- Task Management: Assign and track tasks
+- Employee Overview: View employee profiles and certifications
+- Notification Center: View/send notifications
+- Logs: View department audit logs
+
+
+----- Employee -----
+Employee CAN:
+- View own profile
+- View assigned tasks and update status
+- View own certifications and expiry dates
+- Receive notifications
+- View personal audit logs
+
+Pages:
+- Dashboard: View assigned tasks, certifications, notifications
+- Task List: View and update assigned tasks
+- Profile: View personal profile details
+- Logs: View personal audit logs
+
+----- Auditor -----
+Auditor CAN:
+- View audit logs across all modules
+- Generate audit reports
+
+Pages:
+- Dashboard: Summary of audit logs
+- Audit Logs: View and filter audit logs
+- Reports: Generate audit reports
+
+
+
+
+JWT
+1. Store Hashed Passwords (DONEEE)
+Stop storing plaintext passwords
+Use BCrypt or PBKDF2
+This takes 10 minutes and prevents embarrassment later
+
+Why it matters:
+It's the bare minimum protection for user data.
+
+2. Add [Authorize] to Protected Endpoints
+
+Log in → receive token
+Only authenticated users can use APIs
+Without this, token is pointless
+
+
+3. Add Role-Based Authorization Where It Matters
+Example:
+Admin can manage users
+Employee can only view their own data
+You already have the role claim—use it.
+
+4. Token Expiry
+One-hour expiry is fine
+No refresh token system needed unless you hate relogging
+
+Don’t overengineer refresh tokens for personal use.
+
+
+5. Basic Logout Concept
+
+You don’t need blacklisting or token revocation tables.
+Just:
+Delete token from frontend storage
+Done
+
+For a project, that’s enough.
