@@ -167,3 +167,4 @@ C:\Users\denni\OneDrive\Desktop\TeamOps\backend\bin\Debug\net9.0\BCrypt.Net-Next
 C:\Users\denni\OneDrive\Desktop\TeamOps\backend\bin\Debug\net9.0\Isopoh.Cryptography.Argon2.dll
 C:\Users\denni\OneDrive\Desktop\TeamOps\backend\bin\Debug\net9.0\Isopoh.Cryptography.Blake2b.dll
 C:\Users\denni\OneDrive\Desktop\TeamOps\backend\bin\Debug\net9.0\Isopoh.Cryptography.SecureArray.dll
+C:\Users\denni\OneDrive\Desktop\TeamOps\backend\obj\Debug\net9.0\backend.sourcelink.json

@@ -11,6 +11,9 @@ namespace backend.Models
         [Column("UserId")]
         public int UserId { get; set; }
 
+        [Column("EmployeeId")]
+        public int? EmployeeId { get; set; } 
+
         [Required]
         [MaxLength(100)]
         public string Username { get; set; } = null!;
@@ -38,5 +41,8 @@ namespace backend.Models
 
         [ForeignKey(nameof(RoleId))]
         public virtual Role Role { get; set; } = null!;
+
+        [ForeignKey(nameof(EmployeeId))]
+        public virtual Employee? Employee { get; set; }
     }
 }

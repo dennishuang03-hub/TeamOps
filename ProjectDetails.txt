@@ -175,3 +175,25 @@ Delete token from frontend storage
 Done
 
 For a project, that’s enough.
+
+
+
+SuperAdmin
+Username: dennis
+Password: 123456 
+
+Admin
+Username: hr_admin
+Password: admin123
+
+Manager
+Username: manager_john
+Password: manager123
+
+Employee
+Username: employee_sara   
+Password: employee123
+
+Auditor
+Username: auditor_sam
+Password: auditor123

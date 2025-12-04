@@ -12,9 +12,6 @@ namespace backend.Models
         public int EmployeeId { get; set; }
 
         [Required]
-        public int UserId { get; set; }
-
-        [Required]
         [StringLength(150)]
         public string FullName { get; set; } = null!;
 
@@ -40,9 +37,6 @@ namespace backend.Models
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-
-        [ForeignKey(nameof(UserId))]
-        public virtual User User { get; set; } = null!;
 
         [ForeignKey(nameof(DepartmentId))]
         public virtual Department Department { get; set; } = null!;

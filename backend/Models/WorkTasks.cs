@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace backend.Models
 {
     [Table("tasks")]
-    public class Task
+    public class WorkTask
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
